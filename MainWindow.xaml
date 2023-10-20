@@ -1,0 +1,34 @@
+﻿<Window x:Class="servisas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:servisas"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Button row -->
+            <RowDefinition Height="Auto"/> <!-- TextBoxes row -->
+            <RowDefinition Height="Auto" /> <!-- Delete button row -->
+            <RowDefinition Height="Auto"/> <!-- ListBox row -->
+        </Grid.RowDefinitions>
+        
+            <!-- Add Bike Button -->
+        <Button Content="Add Bike" Click="AddBikeButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" />
+            
+            <!-- TextBoxes for User Input -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" >
+            <TextBlock Text="ID:" Margin="0,0,5,0" VerticalAlignment="Center" />
+            <TextBox x:Name="BikeIdTextBox" Width="100"/>
+            <TextBlock Text="Model:" Margin="10,0,5,0" VerticalAlignment="Center" />
+            <TextBox x:Name="ModelTextBox" Width="100"/>
+        </StackPanel>
+        
+            <!-- Delete Bike Button -->
+        <Button Content="Delete Bike" Click="DeleteBikeButton_Click" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" />
+            
+            <!-- Bike ListBox -->
+        <ListBox x:Name="BikeListBox" MouseDoubleClick="BikeListBox_MouseDoubleClick" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="300" Margin="10,10,0,0" />
+    </Grid>
+</Window>
