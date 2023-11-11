@@ -8,7 +8,18 @@ namespace servisas
 {
     public class BikeRepository
     {
-        private List<Bike> bikes = new List<Bike>();
+        private List<Bike> bikes; // = new List<Bike>();
+
+        public BikeRepository()
+        {
+            bikes = new List<Bike>();
+            LoadBikesFromJson();
+        }
+
+        public void LoadBikesFromJson()
+        {
+            bikes = JsonFileHandler.LoadBikesFromJson();
+        }
 
         public void AddBike(Bike bike)
         {
@@ -18,6 +29,7 @@ namespace servisas
         public void DeleteBike(string bikeId)
         {
             bikes.RemoveAll(bike => bike.BikeId == bikeId);
+            JsonFileHandler.SaveBikesToJson(bikes);
         }
 
         public List<Bike> GetAllBikes()
@@ -33,6 +45,10 @@ namespace servisas
                 existingBike.Model = updatedBike.Model;
                 existingBike.OverallCondition = updatedBike.OverallCondition ?? "...";
                 existingBike.CoolantLevel = updatedBike.CoolantLevel ?? "...";
+                existingBike.EngineOilLevel = updatedBike.EngineOilLevel ?? "...";//2
+                existingBike.TyrePressure = updatedBike.TyrePressure ?? "...";
+                existingBike.Fasteners = updatedBike.Fasteners ?? "...";
+                existingBike.WaterPump = updatedBike.WaterPump ?? "...";
             }
         }
 
@@ -40,5 +56,6 @@ namespace servisas
         {
             return bikes.FirstOrDefault(b => b.BikeId == bikeId);
         }
+
     }
 }

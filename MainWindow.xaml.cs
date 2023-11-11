@@ -1,6 +1,7 @@
 ﻿using servisas;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,8 @@ namespace servisas
         {
             InitializeComponent();
             bikeRepository = new BikeRepository();
+            bikeRepository.LoadBikesFromJson();
+            RefreshBikeList();
         }
 
         private void AddBikeButton_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,11 @@ namespace servisas
                 BikeId = bikeId,
                 Model = model,
                 OverallCondition = "...",
-                CoolantLevel = "..."
+                CoolantLevel = "...",
+                EngineOilLevel = "...",//7
+                TyrePressure = "...",
+                Fasteners = "...",
+                WaterPump = "...",
             };
 
             bikeRepository.AddBike(newBike);

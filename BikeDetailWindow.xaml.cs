@@ -27,18 +27,52 @@ namespace servisas
             bike = selectedBike;
             bikeRepository = repository;
 
-            //text input
-            BikeIdTextBox.Text = bike.BikeId;
-            ModelTextBox.Text = bike.Model;
-            //combobox input
-            OverallConditionComboBox.ItemsSource = new List<string> { "Good", "Average", "Bad" };
-            CoolantLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
-            // TODO: this part does not work:
-            // [
-            OverallConditionComboBox.SelectedItem = bike.OverallCondition;
-            CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
-            // ]
-            // DataContext = bike;
+            List<Bike> bikes = JsonFileHandler.LoadBikesFromJson();
+            Bike loadedBike = bikes.FirstOrDefault(b => b.BikeId == selectedBike.BikeId);
+
+            if (loadedBike != null)
+            {
+                bike = loadedBike;
+                //load text input
+                BikeIdTextBox.Text = bike.BikeId;
+                ModelTextBox.Text = bike.Model;
+                //show the choices
+                OverallConditionComboBox.ItemsSource = new List<string> { "Good", "Average", "Bad" };
+                CoolantLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
+                EngineOilLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };//3
+                TyrePressureComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
+                FastenersComboBox.ItemsSource = new List<string> { "Normal", "Damaged" };
+                WaterPumpComboBox.ItemsSource = new List<string> { "Dry", "Antifreeze", "Oil" };
+                //load saved choices
+                OverallConditionComboBox.SelectedItem = bike.OverallCondition;
+                CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
+                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;//4
+                TyrePressureComboBox.SelectedItem = bike.TyrePressure;
+                FastenersComboBox.SelectedItem = bike.Fasteners;
+                WaterPumpComboBox.SelectedItem = bike.WaterPump;
+            }
+
+            else
+            {
+                //load text input
+                BikeIdTextBox.Text = bike.BikeId;
+                ModelTextBox.Text = bike.Model;
+                //shows the choices
+                OverallConditionComboBox.ItemsSource = new List<string> { "Good", "Average", "Bad" };
+                CoolantLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
+                EngineOilLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };//3.1
+                TyrePressureComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
+                FastenersComboBox.ItemsSource = new List<string> { "Normal", "Damaged" };
+                WaterPumpComboBox.ItemsSource = new List<string> { "Dry", "Antifreeze", "Oil" };
+                //loads saved choices, do i need this here?
+                OverallConditionComboBox.SelectedItem = bike.OverallCondition;
+                CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
+                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;//4.1
+                TyrePressureComboBox.SelectedItem = bike.TyrePressure;
+                FastenersComboBox.SelectedItem = bike.Fasteners;
+                WaterPumpComboBox.SelectedItem = bike.WaterPump;
+            }
+
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -49,8 +83,13 @@ namespace servisas
             //combobox input
             bike.OverallCondition = OverallConditionComboBox.SelectedItem?.ToString() ?? "...";
             bike.CoolantLevel = CoolantLevelComboBox.SelectedItem?.ToString() ?? "...";
+            bike.EngineOilLevel = EngineOilLevelComboBox.SelectedItem?.ToString() ?? "...";//5
+            bike.TyrePressure = TyrePressureComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Fasteners = FastenersComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.WaterPump = WaterPumpComboBox?.SelectedItem?.ToString() ?? "...";
 
             bikeRepository.UpdateBike(bike);
+            JsonFileHandler.SaveBikesToJson(bikeRepository.GetAllBikes());
             this.Close();
         }
 

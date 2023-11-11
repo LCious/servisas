@@ -6,23 +6,59 @@
         xmlns:local="clr-namespace:servisas"
         mc:Ignorable="d"
         Title="BikeDetailWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel Margin="10" >
-            
-            <TextBlock Text="Bike ID:"/>
-            <TextBox x:Name="BikeIdTextBox" Width="200" Margin="0,5"/>
-            
-            <TextBlock Text="Model:"/>
-            <TextBox x:Name="ModelTextBox" Width="200" Margin="0,5"/>
-            
-            <TextBlock Text="Overall Condition:"/>
-            <ComboBox x:Name="OverallConditionComboBox" Width="200" Margin="0,5" />
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <StackPanel Margin="10" >
 
-            <TextBlock Text="Coolant Level:"/>
-            <ComboBox x:Name="CoolantLevelComboBox" Width="200" Margin="0,5" />
+                <!-- Pradinis tikrinimas -->
+                <TextBlock Text="Pradinis patikrinimas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
-            <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
-                
-        </StackPanel>
-    </Grid>
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Bike ID:"/>
+                    <TextBox x:Name="BikeIdTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Model:"/>
+                    <TextBox x:Name="ModelTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Overall Condition:"/>
+                    <ComboBox x:Name="OverallConditionComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Coolant Level:"/>
+                    <ComboBox x:Name="CoolantLevelComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Engine Oil Level:"/> <!--6-->
+                    <ComboBox x:Name="EngineOilLevelComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Tyre Pressure:"/>
+                    <ComboBox x:Name="TyrePressureComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Fasteners Condition:"/>
+                    <ComboBox x:Name="FastenersComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Water Pump Emergency Pipe Condition:"/>
+                    <ComboBox x:Name="WaterPumpComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <!-- Elektros, jungikliu patikra -->
+                <TextBlock Text="Elektros, jungikliu patikra" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Window>
