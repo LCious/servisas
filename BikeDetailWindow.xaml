@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:servisas"
         mc:Ignorable="d"
-        Title="BikeDetailWindow" Height="450" Width="800">
+        Title="BikeDetailWindow" Height="460" Width="810">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <StackPanel Margin="10" >
@@ -34,7 +34,8 @@
                 </UniformGrid>
 
                 <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Engine Oil Level:"/> <!--6-->
+                    <TextBlock Text="Engine Oil Level:"/>
+                    <!--6-->
                     <ComboBox x:Name="EngineOilLevelComboBox" Width="200" Margin="0,5" />
                 </UniformGrid>
 
@@ -57,6 +58,7 @@
                 <TextBlock Text="Elektros, jungikliu patikra" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
                 <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+                <Button Content="Delete Bike" Click="DeleteBikeButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
 
             </StackPanel>
         </Grid>

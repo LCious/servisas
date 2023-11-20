@@ -33,6 +33,13 @@ namespace servisas
 
         private void AddBikeButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (string.IsNullOrEmpty(BikeIdTextBox.Text) || string.IsNullOrEmpty(ModelTextBox.Text))
+            {
+                MessageBox.Show("ID and Model must not be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string bikeId = BikeIdTextBox.Text;
             string model = ModelTextBox.Text;
 
@@ -50,33 +57,14 @@ namespace servisas
 
             bikeRepository.AddBike(newBike);
             RefreshBikeList();
-        }
-
-        private void DeleteBikeButton_Click(Object sender, RoutedEventArgs e)
-        {
-            string selectedBikeId = GetSelectedBikeId();
-            
-            if(!string.IsNullOrEmpty(selectedBikeId))
-            {
-                MessageBoxResult result = MessageBox.Show($"Delete bike {selectedBikeId}?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                
-                if(result == MessageBoxResult.Yes)
-                {
-                    bikeRepository.DeleteBike(selectedBikeId);
-                    RefreshBikeList();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Select bike to delete", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
 
         }
 
-        private void RefreshBikeList()
+        private void RefreshBikeList(List<Bike>? bikes = null)
         {
             BikeListBox.Items.Clear();
-            List<Bike> bikes = bikeRepository.GetAllBikes();
+            bikes ??= bikeRepository.GetAllBikes();
+
             foreach (var bike in bikes)
             {
                 BikeListBox.Items.Add(bike.BikeId);
@@ -116,6 +104,32 @@ namespace servisas
                 }
 
             }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchTerm = SearchTextBox.Text.Trim();
+            SearchBikes(searchTerm);
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Text = string.Empty;
+            RefreshBikeList();
+        }
+
+        private void SearchBikes(string searchTerm)
+        {
+            List<Bike> bikes = bikeRepository.GetAllBikes();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                bikes = bikes.Where(bike => bike.BikeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                                             bike.Model.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                             .ToList();
+            }
+
+            RefreshBikeList(bikes);
         }
 
     }

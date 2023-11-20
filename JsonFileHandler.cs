@@ -20,14 +20,14 @@ namespace servisas
 
         public static List<Bike> LoadBikesFromJson()
         {
-            if(File.Exists(FilePath))
+            if (File.Exists(FilePath))
             {
                 string jsonData = File.ReadAllText(FilePath);
                 if (!string.IsNullOrEmpty(jsonData))
                 {
                     return JsonConvert.DeserializeObject<List<Bike>>(jsonData) ?? new List<Bike>();
                 }
-                
+
             }
             return new List<Bike>();
         }

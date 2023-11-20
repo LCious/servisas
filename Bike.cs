@@ -32,6 +32,6 @@ namespace servisas
         public string Fasteners { get; set; } = "...";
 
         [JsonProperty("WaterPump")]
-        public string WaterPump {  get; set; } = "...";
+        public string WaterPump { get; set; } = "...";
     }
 }
