@@ -27,6 +27,8 @@ namespace servisas
             bike = selectedBike;
             bikeRepository = repository;
 
+            DataContext = bike;
+
             List<Bike> bikes = JsonFileHandler.LoadBikesFromJson();
             Bike loadedBike = bikes.FirstOrDefault(b => b.BikeId == selectedBike.BikeId);
 
@@ -91,6 +93,24 @@ namespace servisas
             bikeRepository.UpdateBike(bike);
             JsonFileHandler.SaveBikesToJson(bikeRepository.GetAllBikes());
             this.Close();
+        }
+
+        private void DeleteBikeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike != null)
+            {
+                MessageBoxResult result = MessageBox.Show($"Delete bike {bike.BikeId}?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    bikeRepository.DeleteBike(bike.BikeId);
+                    Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Unable to delete bike.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
     }
