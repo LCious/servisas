@@ -33,5 +33,20 @@ namespace servisas
 
         [JsonProperty("WaterPump")]
         public string WaterPump { get; set; } = "...";
+
+        //Additional information
+        [JsonProperty("CreatedDate")]
+        public DateTime CreatedDate { get; set; }
+        [JsonProperty("UpdatedDate")]
+        public DateTime UpdatedDate { get; set; }
+
+        [JsonProperty("IsLocked")]
+        public bool IsLocked {  get; set; }
+
+        public Bike()
+        {
+            CreatedDate = DateTime.Now;
+            IsLocked = false;
+        }
     }
 }

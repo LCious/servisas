@@ -52,6 +52,9 @@ namespace servisas
                 TyrePressureComboBox.SelectedItem = bike.TyrePressure;
                 FastenersComboBox.SelectedItem = bike.Fasteners;
                 WaterPumpComboBox.SelectedItem = bike.WaterPump;
+                //Additional information
+                bike.CreatedDate = DateTime.Now;
+                bike.UpdatedDate = DateTime.Now;
             }
 
             else
@@ -73,6 +76,9 @@ namespace servisas
                 TyrePressureComboBox.SelectedItem = bike.TyrePressure;
                 FastenersComboBox.SelectedItem = bike.Fasteners;
                 WaterPumpComboBox.SelectedItem = bike.WaterPump;
+                //Additional information
+                bike.CreatedDate = selectedBike.CreatedDate;
+                bike.UpdatedDate = selectedBike.UpdatedDate;
             }
 
         }
@@ -89,6 +95,8 @@ namespace servisas
             bike.TyrePressure = TyrePressureComboBox?.SelectedItem?.ToString() ?? "...";
             bike.Fasteners = FastenersComboBox?.SelectedItem?.ToString() ?? "...";
             bike.WaterPump = WaterPumpComboBox?.SelectedItem?.ToString() ?? "...";
+
+            bike.UpdatedDate = DateTime.Now;
 
             bikeRepository.UpdateBike(bike);
             JsonFileHandler.SaveBikesToJson(bikeRepository.GetAllBikes());
@@ -110,6 +118,22 @@ namespace servisas
             else
             {
                 MessageBox.Show("Unable to delete bike.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LockButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (bike != null)
+            {
+                bike.IsLocked = true;
+            }
+        }
+
+        private void UnlockButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (bike != null)
+            {
+                bike.IsLocked = false;
             }
         }
 

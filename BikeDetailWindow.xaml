@@ -57,8 +57,15 @@
                 <!-- Elektros, jungikliu patikra -->
                 <TextBlock Text="Elektros, jungikliu patikra" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
+                <!-- Options -->
                 <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
                 <Button Content="Delete Bike" Click="DeleteBikeButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+                <Button Content="Lock" Click="LockButtonClick" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+                <Button Content="Unlock" Click="UnlockButtonClick" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+
+                <!-- Additional information -->
+                <TextBlock Text="{Binding CreatedDate, StringFormat='Created: {0:dd/MM/yyyy HH:mm:ss}'}"/>
+                <TextBlock Text="{Binding UpdatedDate, StringFormat='Last Edited: {0:dd/MM/yyyy HH:mm:ss}'}"/>
 
             </StackPanel>
         </Grid>

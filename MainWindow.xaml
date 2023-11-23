@@ -60,6 +60,9 @@
                     </StackPanel>
                 </Border>
 
+                <TextBox x:Name="PasswordTextBox" Width="150" Margin="5"/>
+                <Button Content="Set passcode" Click="SetPasswordButton_Click" Width="100"/>
+
             </StackPanel>
         </Border>
 

@@ -49,6 +49,11 @@ namespace servisas
                 existingBike.TyrePressure = updatedBike.TyrePressure ?? "...";
                 existingBike.Fasteners = updatedBike.Fasteners ?? "...";
                 existingBike.WaterPump = updatedBike.WaterPump ?? "...";
+
+                //Additional information
+                existingBike.UpdatedDate = updatedBike.UpdatedDate;
+
+                existingBike.IsLocked = updatedBike.IsLocked;
             }
         }
 
