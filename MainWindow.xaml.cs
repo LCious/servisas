@@ -47,7 +47,7 @@ namespace servisas
 
             Bike newBike = new Bike
             {
-                BikeId = bikeId,
+                BikeId = bikeId, // VIN
                 Model = model,
                 OverallCondition = "...",
                 CoolantLevel = "...",
@@ -107,7 +107,7 @@ namespace servisas
                         }
                         else
                         {
-                            if(!string.IsNullOrEmpty(userInput)) MessageBox.Show("Wrong passcode");
+                            if (!string.IsNullOrEmpty(userInput_hash) && passwordInput.OKButtonClicked) MessageBox.Show("Wrong passcode");
                         }
                     }
                 }

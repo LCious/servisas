@@ -10,18 +10,116 @@
         <Grid>
             <StackPanel Margin="10" >
 
-                <!-- Pradinis tikrinimas -->
-                <TextBlock Text="Pradinis patikrinimas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <!-- Serviso lapas -->
+                <TextBlock Text="Serviso lapas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Nr. " FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
+                <!-- Bendra informacija -->
                 <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Bike ID:"/>
-                    <TextBox x:Name="BikeIdTextBox" Width="200" Margin="0,5"/>
+                    <TextBlock Text="Date:"/>
+                    <TextBox x:Name="DateServiceTextBox" Width="200" Margin="0,5"/>
                 </UniformGrid>
 
                 <UniformGrid Columns="2" Margin="0,5">
                     <TextBlock Text="Model:"/>
                     <TextBox x:Name="ModelTextBox" Width="200" Margin="0,5"/>
                 </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Phone:"/>
+                    <TextBox x:Name="PhoneTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Mileage:"/>
+                    <TextBox x:Name="MileageTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Moto/h:"/>
+                    <TextBox x:Name="MotoHTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Registration plate:"/>
+                    <TextBox x:Name="RegistrationPlateTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Manufacture year:"/>
+                    <TextBox x:Name="ManufactureYearTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="VIN:"/>
+                    <TextBox x:Name="BikeIdTextBox" Width="200" Margin="0,5"/>
+                </UniformGrid>
+
+                <!-- Trecia lentele, negarantiniai darbai -->
+                <TextBlock Text="Negarantiniai remonto darbai" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Number" FontWeight="Bold" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Column="1" Text="Description" FontWeight="Bold" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Column="2" Text="Code" FontWeight="Bold" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Column="3" Text="Price" FontWeight="Bold" Margin="0,0,5,0"/>
+                    </Grid>
+
+                    <ItemsControl ItemsSource="{Binding NonGuaranteeServices}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <UniformGrid Columns="4" Margin="0,5">
+                                    <TextBox Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                                    <TextBox Text="{Binding Description, Mode=TwoWay}" FontWeight="Bold" Width="150"/>
+                                    <TextBox Text="{Binding Code, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                                    <TextBox Text="{Binding Price, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                                </UniformGrid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                <Button Content="Add Service" Click="AddServiceButton_Click" Width="100" HorizontalAlignment="Left" Margin="0.1"/>
+
+                <!-- Ketvirta lentele, negarantiniu darbu laikai -->
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Number" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Grid.Column="1" Text="Start" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Grid.Column="2" Text="End" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Grid.Column="3" Text="Service" FontWeight="Bold" Margin="0,0,5,0"/>
+                </Grid>
+
+                <ItemsControl ItemsSource="{Binding NonGuaranteeServicesTime}" VerticalAlignment="Bottom">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <UniformGrid Columns="4" Margin="0,5">
+                                <TextBox Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                                <TextBox Text="{Binding Start, Mode=TwoWay}" FontWeight="Bold" Width="150"/>
+                                <TextBox Text="{Binding End, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                                <TextBox Text="{Binding Service, Mode=TwoWay}" FontWeight="Bold" Width="100"/>
+                            </UniformGrid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button Content="Add Service Times" Click="AddServiceTimeButton_Click" Width="100" HorizontalAlignment="Left" Margin="0.1"/>
+
+                <!-- Pradinis patikrinimas -->
+                <TextBlock Text="Pradinis patikrinimas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
                 <UniformGrid Columns="2" Margin="0,5">
                     <TextBlock Text="Overall Condition:"/>
@@ -54,8 +152,29 @@
                     <ComboBox x:Name="WaterPumpComboBox" Width="200" Margin="0,5" />
                 </UniformGrid>
 
+
                 <!-- Elektros, jungikliu patikra -->
                 <TextBlock Text="Elektros, jungikliu patikra" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Low beam lights:"/>
+                    <ComboBox x:Name="LowBeamComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="High beam lights:"/>
+                    <ComboBox x:Name="HighBeamComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Blinkers:"/>
+                    <ComboBox x:Name="BlinkersComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5">
+                    <TextBlock Text="Emergency blinkers:"/>
+                    <ComboBox x:Name="EmergencyBlinkersComboBox" Width="200" Margin="0,5" />
+                </UniformGrid>
 
                 <!-- Options -->
                 <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
