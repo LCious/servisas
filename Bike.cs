@@ -11,8 +11,14 @@ using System.Diagnostics;
 namespace servisas
 {
     [Serializable]
-    public class Bike // 1
+    public class Bike : INotifyPropertyChanged // 1
     {
+        [JsonProperty("Nr")]
+        public string Nr { get; set; } = "";
+
+        [JsonProperty("Mechanic")]
+        public string Mechanic { get; set; } = "";
+
         //Pirma lentele, bendra informacija
         [JsonProperty("DateService")]
         public string DateService { get; set; } = "";
@@ -57,10 +63,16 @@ namespace servisas
         public ObservableCollection<ServiceEntryTime> NonGuaranteeServicesTime { get; set; } = new ObservableCollection<ServiceEntryTime>();
 
         //Penkta lentele, dalys, kaina, kita info
+        [JsonProperty("NonGuaranteeServicesPart")]
+        public ObservableCollection<ServiceEntryPart> NonGuaranteeServicesPart { get; set; } = new ObservableCollection<ServiceEntryPart>();
 
         //Sesta lentele, garantiniai remonto darbai / gamykliniai atnaujinimai
+        [JsonProperty("GuaranteeServices")]
+        public ObservableCollection<ServiceEntryGuarantee> GuaranteeServices { get; set; } = new ObservableCollection<ServiceEntryGuarantee>();
 
         //Septinta lentele, dalys, kita info
+        [JsonProperty("GuaranteeServicesPart")]
+        public ObservableCollection<ServiceEntryGuaranteePart> GuaranteeServicesPart { get; set; } = new ObservableCollection<ServiceEntryGuaranteePart>();
 
         //Pradinis patikrinimas
         [JsonProperty("OverallCondition")]
@@ -103,7 +115,19 @@ namespace servisas
         public DateTime UpdatedDate { get; set; }
 
         [JsonProperty("IsLocked")]
-        public bool IsLocked {  get; set; }
+        public bool IsLocked
+        {
+            get { return _isLocked; }
+            set
+            {
+                if(_isLocked != value)
+                {
+                    _isLocked = value;
+                    OnPropertyChanged(nameof(IsLocked));
+                }
+            }
+        }
+        private bool _isLocked;
 
         //Constructor
         public Bike()
@@ -119,9 +143,56 @@ namespace servisas
             NonGuaranteeServices.Add(service);
         }
 
-        public void AddNonGuaranteeServiceTime(ServiceEntryTime service)
+        public void RemoveNonGuaranteeService (ServiceEntry service)
+        {
+            NonGuaranteeServices.Remove(service);
+        }
+
+        public void AddNonGuaranteeServiceTime (ServiceEntryTime service)
         {
             NonGuaranteeServicesTime.Add(service);
+        }
+
+        public void RemoveNonGuaranteeServiceTime (ServiceEntryTime service)
+        {
+            NonGuaranteeServicesTime.Remove(service);
+        }
+
+        public void AddNonGuaranteeServicePart (ServiceEntryPart service)
+        {
+            NonGuaranteeServicesPart.Add(service);
+        }
+
+        public void RemoveNonGuaranteeServicePart (ServiceEntryPart service)
+        {
+            NonGuaranteeServicesPart.Remove(service);
+        }
+
+        public void AddGuaranteeService (ServiceEntryGuarantee service)
+        {
+            GuaranteeServices.Add(service);
+        }
+
+        public void RemoveGuaranteeService (ServiceEntryGuarantee service)
+        {
+            GuaranteeServices.Remove(service);
+        }
+
+        public void AddGuaranteeServicePart (ServiceEntryGuaranteePart service)
+        {
+            GuaranteeServicesPart.Add(service);
+        }
+
+        public void RemoveGuaranteeServicePart (ServiceEntryGuaranteePart service)
+        {
+            GuaranteeServicesPart.Remove(service);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }
@@ -281,4 +352,263 @@ namespace servisas
             Service = "";
         }
     }
+
+    //Negarantiniu darbu dalys
+    [Serializable]
+    public class ServiceEntryPart : INotifyPropertyChanged
+    {
+        private string _number;
+        public string Number
+        {
+            get { return _number; }
+            set
+            {
+                if (_number != value)
+                {
+                    _number = value;
+                    OnPropertyChanged(nameof(Number));
+                }
+            }
+        }
+
+        private string _part;
+        public string Part
+        {
+            get { return _part; }
+            set
+            {
+                if (_part != value)
+                {
+                    _part = value;
+                    OnPropertyChanged(nameof(Part));
+                }
+            }
+        }
+
+        private string _accNumber;
+        public string AccNumber
+        {
+            get { return _accNumber;  }
+            set
+            {
+                if (_accNumber != value)
+                {
+                    _accNumber = value;
+                    OnPropertyChanged(nameof(AccNumber));
+                }
+            }
+        }
+
+        private string _partNumber;
+        public string PartNumber
+        {
+            get { return _partNumber; }
+            set
+            {
+                if (value != _partNumber)
+                {
+                    _partNumber = value;
+                    OnPropertyChanged(nameof(PartNumber));
+                }
+            }
+        }
+
+        private string _quantity;
+        public string Quantity
+        {
+            get { return _quantity; }
+            set
+            {
+                if (value != _quantity)
+                {
+                    _quantity = value;
+                    OnPropertyChanged(nameof(Quantity));
+                }
+            }
+        }
+
+        private string _price;
+        public string Price
+        {
+            get { return _price; }
+            set
+            {
+                if (value != _price)
+                {
+                    _price = value;
+                    OnPropertyChanged(nameof(Price));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public ServiceEntryPart()
+        {
+            Number = "";
+            Part = "";
+            AccNumber = "";
+            PartNumber = "";
+            Quantity = "";
+            Price = "";
+        }
+    }
+
+    //Garantiniai darbai
+    [Serializable]
+    public class ServiceEntryGuarantee : INotifyPropertyChanged
+    {
+        private string _number;
+        public string Number
+        {
+            get { return _number; }
+            set
+            {
+                if (value != _number)
+                {
+                    _number = value;
+                    OnPropertyChanged(nameof(Number));
+                }
+            }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                if (value != _description)
+                {
+                    _description = value;
+                    OnPropertyChanged(nameof(Description));
+                }
+            }
+        }
+
+        private string _time;
+        public string Time
+        {
+            get { return _time; }
+            set
+            {
+                if (value != _time)
+                {
+                    _time = value;
+                    OnPropertyChanged(nameof(Time));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public ServiceEntryGuarantee()
+        {
+            Number = "";
+            Description = "";
+            Time = "";
+        }
+    }
+
+    //Garantiniu darbu dalys
+    [Serializable]
+    public class ServiceEntryGuaranteePart : INotifyPropertyChanged
+    {
+        private string _number;
+        public string Number
+        {
+            get { return _number; }
+            set
+            {
+                if (_number != value)
+                {
+                    _number = value;
+                    OnPropertyChanged(nameof(Number));
+                }
+            }
+        }
+
+        private string _part;
+        public string Part
+        {
+            get { return _part; }
+            set
+            {
+                if (_part != value)
+                {
+                    _part = value;
+                    OnPropertyChanged(nameof(Part));
+                }
+            }
+        }
+
+        private string _accNumber;
+        public string AccNumber
+        {
+            get { return _accNumber; }
+            set
+            {
+                if (_accNumber != value)
+                {
+                    _accNumber = value;
+                    OnPropertyChanged(nameof(AccNumber));
+                }
+            }
+        }
+
+        private string _partNumber;
+        public string PartNumber
+        {
+            get { return _partNumber; }
+            set
+            {
+                if (value != _partNumber)
+                {
+                    _partNumber = value;
+                    OnPropertyChanged(nameof(PartNumber));
+                }
+            }
+        }
+
+        private string _quantity;
+        public string Quantity
+        {
+            get { return _quantity; }
+            set
+            {
+                if (value != _quantity)
+                {
+                    _quantity = value;
+                    OnPropertyChanged(nameof(Quantity));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public ServiceEntryGuaranteePart()
+        {
+            Number = "";
+            Part = "";
+            AccNumber = "";
+            PartNumber = "";
+            Quantity = "";
+        }
+    }
+
 }

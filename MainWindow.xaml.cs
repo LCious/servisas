@@ -38,7 +38,7 @@ namespace servisas
 
             if (string.IsNullOrEmpty(BikeIdTextBox.Text) || string.IsNullOrEmpty(ModelTextBox.Text))
             {
-                MessageBox.Show("ID and Model must not be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Įveskite VIN kodą ir modelį prieš kurdami keturratį.", "Klaida", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -107,7 +107,7 @@ namespace servisas
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(userInput_hash) && passwordInput.OKButtonClicked) MessageBox.Show("Wrong passcode");
+                            if (!string.IsNullOrEmpty(userInput_hash) && passwordInput.OKButtonClicked) MessageBox.Show("Neteisingas slaptažodis..");
                         }
                     }
                 }
@@ -150,11 +150,11 @@ namespace servisas
             {
                 string hash = ComputeSha256Hash(newPassword);
                 JsonFileHandler.SaveHashToJson(hash);
-                MessageBox.Show("Passcode saved");
+                MessageBox.Show("Slaptažodis išsaugotas..");
             }
             else
             {
-                MessageBox.Show("Passcode input box must not be empty");
+                MessageBox.Show("Slaptažodis neįvestas..");
             }
 
         }

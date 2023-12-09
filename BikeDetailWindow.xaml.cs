@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,11 @@ namespace servisas
             if (loadedBike != null)
             {
                 bike = loadedBike;
-                //DataContext = loadedBike;
+                DataContext = loadedBike;
+
+                NrTextBox.Text = bike.Nr;
+                MechanicTextBox.Text = bike.Mechanic;
+
                 //load text input
                 DateServiceTextBox.Text = bike.DateService;
                 ModelTextBox.Text = bike.Model;
@@ -44,18 +49,23 @@ namespace servisas
                 MotoHTextBox.Text = bike.MotoH;
                 RegistrationPlateTextBox.Text = bike.RegistrationPlate;
                 ManufactureYearTextBox.Text = bike.ManufactureYear;
-                //show the choices
-                OverallConditionComboBox.ItemsSource = new List<string> { "Good", "Average", "Bad" };
-                CoolantLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
-                EngineOilLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };//3
-                TyrePressureComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
-                FastenersComboBox.ItemsSource = new List<string> { "Normal", "Damaged" };
-                WaterPumpComboBox.ItemsSource = new List<string> { "Dry", "Antifreeze", "Oil" };
 
-                LowBeamComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                HighBeamComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                BlinkersComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Working", "Not working" };
+                ManufactureUpdateTextBox.Text = bike.ManufactureUpdate;
+                GuaranteeUpdateTextBox.Text = bike.GuaranteeUpdate;
+                RRTextBox.Text = bike.RR;
+
+                //show the choices
+                OverallConditionComboBox.ItemsSource = new List<string> { "Gera", "Apgadinta" };
+                CoolantLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                EngineOilLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                TyrePressureComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                FastenersComboBox.ItemsSource = new List<string> { "Geri", "Apgadinti" };
+                WaterPumpComboBox.ItemsSource = new List<string> { "Sausa", "Antifrizas", "Tepalas" };
+
+                LowBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                HighBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
 
                 //load saved choices
                 OverallConditionComboBox.SelectedItem = bike.OverallCondition;
@@ -77,6 +87,9 @@ namespace servisas
 
             else
             {
+                NrTextBox.Text = bike.Nr;
+                MechanicTextBox.Text = bike.Mechanic;
+
                 //load text input
                 DateServiceTextBox.Text = bike.DateService;
                 ModelTextBox.Text = bike.Model;
@@ -86,18 +99,24 @@ namespace servisas
                 MotoHTextBox.Text = bike.MotoH;
                 RegistrationPlateTextBox.Text = bike.RegistrationPlate;
                 ManufactureYearTextBox.Text = bike.ManufactureYear;
-                //shows the choices
-                OverallConditionComboBox.ItemsSource = new List<string> { "Good", "Average", "Bad" };
-                CoolantLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
-                EngineOilLevelComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };//3.1
-                TyrePressureComboBox.ItemsSource = new List<string> { "Above", "Normal", "Below" };
-                FastenersComboBox.ItemsSource = new List<string> { "Normal", "Damaged" };
-                WaterPumpComboBox.ItemsSource = new List<string> { "Dry", "Antifreeze", "Oil" };
 
-                LowBeamComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                HighBeamComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                BlinkersComboBox.ItemsSource = new List<string> { "Working", "Not working" };
-                EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Working", "Not working" };
+                ManufactureUpdateTextBox.Text = bike.ManufactureUpdate;
+                GuaranteeUpdateTextBox.Text = bike.GuaranteeUpdate;
+                RRTextBox.Text = bike.RR;
+
+                //shows the choices
+                OverallConditionComboBox.ItemsSource = new List<string> { "Gera", "Apgadinta" };
+                CoolantLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                EngineOilLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                TyrePressureComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
+                FastenersComboBox.ItemsSource = new List<string> { "Geri", "Apgadinti" };
+                WaterPumpComboBox.ItemsSource = new List<string> { "Sausa", "Antifrizas", "Tepalas" };
+
+                LowBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                HighBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+
                 //loads saved choices, do i need this here?
                 OverallConditionComboBox.SelectedItem = bike.OverallCondition;
                 CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
@@ -119,6 +138,9 @@ namespace servisas
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            bike.Nr = NrTextBox.Text;
+            bike.Mechanic = MechanicTextBox.Text;
+
             //text input
             bike.DateService = DateServiceTextBox.Text;
             bike.Model = ModelTextBox.Text;
@@ -128,6 +150,10 @@ namespace servisas
             bike.MotoH = MotoHTextBox.Text;
             bike.RegistrationPlate = RegistrationPlateTextBox.Text;
             bike.ManufactureYear = ManufactureYearTextBox.Text;
+
+            bike.ManufactureUpdate = ManufactureUpdateTextBox.Text;
+            bike.GuaranteeUpdate = GuaranteeUpdateTextBox.Text;
+            bike.RR = RRTextBox.Text;
 
             //combobox input
             bike.OverallCondition = OverallConditionComboBox.SelectedItem?.ToString() ?? "...";
@@ -153,7 +179,7 @@ namespace servisas
         {
             if (bike != null)
             {
-                MessageBoxResult result = MessageBox.Show($"Delete bike {bike.BikeId}?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show($"Ar tikrai norite ištrinti keturratį {bike.BikeId}?", "Patvirtinimas", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -163,7 +189,7 @@ namespace servisas
             }
             else
             {
-                MessageBox.Show("Unable to delete bike.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Keturratis neištrintas..", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -204,14 +230,19 @@ namespace servisas
             codeTextBox.SetBinding(TextBox.TextProperty, new Binding("Code") { Source = newService });
             priceTextBox.SetBinding(TextBox.TextProperty, new Binding("Price") { Source = newService });
 
-            // Add textboxes to the panel
-/*            NewServiceEntryPanel.Children.Add(numberTextBox);
-            NewServiceEntryPanel.Children.Add(descriptionTextBox);
-            NewServiceEntryPanel.Children.Add(codeTextBox);
-            NewServiceEntryPanel.Children.Add(priceTextBox);
+        }
 
-            NewServiceEntryPanel.Children.Add(servicePanel);*/
-
+        private void RemoveNonGuaranteeServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike.NonGuaranteeServices.Count > 0)
+            {
+                ServiceEntry lastService = bike.NonGuaranteeServices.Last();
+                bike.RemoveNonGuaranteeService(lastService);
+            }
+            else
+            {
+                MessageBox.Show("Tuščia..");
+            }
         }
 
         private void AddServiceTimeButton_Click(Object sender, RoutedEventArgs e)
@@ -235,14 +266,117 @@ namespace servisas
             endTextBox.SetBinding(TextBox.TextProperty, new Binding("End") { Source = newService });
             serviceTextBox.SetBinding(TextBox.TextProperty, new Binding("Service") { Source = newService });
 
-            // Add textboxes to the panel
-/*            NewServiceEntryPanel.Children.Add(numberTextBox);
-            NewServiceEntryPanel.Children.Add(descriptionTextBox);
-            NewServiceEntryPanel.Children.Add(codeTextBox);
-            NewServiceEntryPanel.Children.Add(priceTextBox);
+        }
 
-            NewServiceEntryPanel.Children.Add(servicePanel);*/
+        private void RemoveNonGuaranteeServiceTimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike.NonGuaranteeServicesTime.Count > 0)
+            {
+                ServiceEntryTime lastService = bike.NonGuaranteeServicesTime.Last();
+                bike.RemoveNonGuaranteeServiceTime(lastService);
+            }
+            else
+            {
+                MessageBox.Show("Tuščia..");
+            }
+        }
 
+        private void AddServicePartButton_Click(Object sender, RoutedEventArgs e)
+        {
+            ServiceEntryPart newService = new ServiceEntryPart();
+            bike.AddNonGuaranteeServicePart(newService);
+
+            StackPanel servicePanel = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 5, 0, 5) };
+
+            TextBox numberTextBox = new TextBox();
+            TextBox partTextBox = new TextBox();
+            TextBox accNumberTextBox = new TextBox();
+            TextBox partNumberTextBox = new TextBox();
+            TextBox quantityTextBox = new TextBox();
+            TextBox priceTextBox = new TextBox();
+
+            numberTextBox.SetBinding(TextBox.TextProperty, new Binding("Number") { Source = newService });
+            partTextBox.SetBinding(TextBox.TextProperty, new Binding("Part") { Source= newService });
+            accNumberTextBox.SetBinding(TextBox.TextProperty, new Binding("AccNumber") { Source = newService });
+            partNumberTextBox.SetBinding(TextBox.TextProperty, new Binding("PartNumber") { Source = newService });
+            quantityTextBox.SetBinding(TextBox.TextProperty, new Binding("Quantity") { Source = newService });
+            priceTextBox.SetBinding(TextBox.TextProperty, new Binding("Price") { Source = newService });
+        }
+
+        private void RemoveServicePartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike.NonGuaranteeServicesPart.Count > 0)
+            {
+                ServiceEntryPart lastService = bike.NonGuaranteeServicesPart.Last();
+                bike.RemoveNonGuaranteeServicePart(lastService);
+            }
+            else
+            {
+                MessageBox.Show("Tuščia..");
+            }
+        }
+
+        private void AddGuaranteeServiceButton_Click(Object sender, RoutedEventArgs e)
+        {
+            ServiceEntryGuarantee newService = new ServiceEntryGuarantee();
+            bike.AddGuaranteeService(newService);
+
+            StackPanel servicePanel = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 5, 0, 5) };
+
+            TextBox numberTextBox = new TextBox();
+            TextBox descriptionTextBox = new TextBox();
+            TextBox timeTextBox = new TextBox();
+
+
+            numberTextBox.SetBinding(TextBox.TextProperty, new Binding("Number") { Source = newService });
+            descriptionTextBox.SetBinding(TextBox.TextProperty, new Binding("Description") { Source = newService });
+            timeTextBox.SetBinding(TextBox.TextProperty, new Binding("Time") { Source = newService });
+        }
+
+        private void RemoveGuaranteeServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike.GuaranteeServices.Count > 0)
+            {
+                ServiceEntryGuarantee lastService = bike.GuaranteeServices.Last();
+                bike.RemoveGuaranteeService(lastService);
+            }
+            else
+            {
+                MessageBox.Show("Tuščia..");
+            }
+        }
+
+        private void AddGuaranteeServicePartButton_Click(Object sender, RoutedEventArgs e)
+        {
+            ServiceEntryGuaranteePart newService = new ServiceEntryGuaranteePart();
+            bike.AddGuaranteeServicePart(newService);
+
+            StackPanel servicePanel = new StackPanel() { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 5, 0, 5) };
+
+            TextBox numberTextBox = new TextBox();
+            TextBox partTextBox = new TextBox();
+            TextBox accNumberTextBox = new TextBox();
+            TextBox partNumberTextBox = new TextBox();
+            TextBox quantityTextBox = new TextBox();
+
+            numberTextBox.SetBinding(TextBox.TextProperty, new Binding("Number") { Source = newService });
+            partTextBox.SetBinding(TextBox.TextProperty, new Binding("Part") { Source = newService });
+            accNumberTextBox.SetBinding(TextBox.TextProperty, new Binding("AccNumber") { Source = newService });
+            partNumberTextBox.SetBinding(TextBox.TextProperty, new Binding("PartNumber") { Source = newService });
+            quantityTextBox.SetBinding(TextBox.TextProperty, new Binding("Quantity") { Source = newService });
+        }
+
+        private void RemoveGuaranteeServicePartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (bike.GuaranteeServicesPart.Count > 0)
+            {
+                ServiceEntryGuaranteePart lastService = bike.GuaranteeServicesPart.Last();
+                bike.RemoveGuaranteeServicePart(lastService);
+            }
+            else
+            {
+                MessageBox.Show("Tuščia..");
+            }
         }
 
     }

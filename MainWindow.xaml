@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:servisas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="460" Width="810">
+        Title="Servisas" Height="460" Width="810">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,17 +17,17 @@
             <StackPanel Margin="10">
 
                 <!-- Functions Header -->
-                <TextBlock Text="Functions" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Veiksmai" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
                 <!-- Search Section -->
                 <Border Background="#E0E0E0" Padding="10" Margin="0,0,0,10">
                     <StackPanel Margin="0,10">
-                        <TextBlock Text="Search" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Paieška" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
                         <!-- Search Bar -->
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
-                            <TextBox x:Name="SearchTextBox" Width="150" Margin="0,0,5,0"/>
-                            <Button Content="Search" Click="SearchButton_Click" Width="90" Margin="0,5,0,0"/>
-                            <Button Content="Clear" Click="ClearButton_Click" Width="90" Margin="0,5,0,0"/>
+                            <TextBox x:Name="SearchTextBox" Width="150" Height="25" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button Content="Ieškoti" Click="SearchButton_Click" Width="90" Margin="0,5,0,0"/>
+                            <Button Content="Valyti" Click="ClearButton_Click" Width="90" Margin="0,5,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -35,18 +35,18 @@
                 <!-- Add Bike Section -->
                 <Border Background="#E0E0E0" Padding="10" Margin="0,0,0,10">
                     <StackPanel Margin="0,10">
-                        <TextBlock Text="Add Bike" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Pridėti keturratį" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
                         <StackPanel Orientation="Vertical" Margin="0,10">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="VIN:" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="VIN kodas:" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBox x:Name="BikeIdTextBox" Width="150" HorizontalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <TextBlock Text="Model:" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="Modelis:" Margin="0,0,5,0" VerticalAlignment="Center"/>
                                 <TextBox x:Name="ModelTextBox" Width="150"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <Button Content="Add Bike" Click="AddBikeButton_Click" Width="100" Margin="0,5,0,0">
+                                <Button Content="Pridėti" Click="AddBikeButton_Click" Width="100" Margin="0,5,0,0">
                                     <Button.Template>
                                         <ControlTemplate TargetType="Button">
                                             <Border Background="#FF66CDAA">
@@ -61,14 +61,14 @@
                 </Border>
 
                 <TextBox x:Name="PasswordTextBox" Width="150" Margin="5"/>
-                <Button Content="Set passcode" Click="SetPasswordButton_Click" Width="100"/>
+                <Button Content="Pakeisti slaptažodį" Click="SetPasswordButton_Click" Width="100"/>
 
             </StackPanel>
         </Border>
 
         <!-- Saved Bikes Section (Right Side) -->
         <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
-            <TextBlock Text="Saved Bikes" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Text="Išsaugoti keturračiai" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" HorizontalAlignment="Center"/>
             <ListBox x:Name="BikeListBox" MouseDoubleClick="BikeListBox_MouseDoubleClick" Width="Auto" Height="Auto" Margin="0,10"/>
         </StackPanel>
     </Grid>

@@ -42,6 +42,9 @@ namespace servisas
             var existingBike = bikes.FirstOrDefault(b => b.BikeId == updatedBike.BikeId);
             if (existingBike != null) // 2
             {
+                existingBike.Nr = updatedBike.Nr;
+                existingBike.Mechanic = updatedBike.Mechanic;
+
                 //First table
                 existingBike.DateService = updatedBike.DateService;
                 existingBike.Model = updatedBike.Model;
@@ -62,6 +65,15 @@ namespace servisas
 
                 //Fourth table
                 existingBike.NonGuaranteeServicesTime = updatedBike.NonGuaranteeServicesTime;
+
+                //Fifth table
+                existingBike.NonGuaranteeServicesPart = updatedBike.NonGuaranteeServicesPart;
+
+                //Sixth table
+                existingBike.GuaranteeServices = updatedBike.GuaranteeServices;
+
+                //Seventh table
+                existingBike.GuaranteeServicesPart = updatedBike.GuaranteeServicesPart;
 
                 //First check
                 existingBike.OverallCondition = updatedBike.OverallCondition ?? "...";
