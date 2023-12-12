@@ -82,7 +82,7 @@ namespace servisas
                     string selectedBikeId = BikeListBox.SelectedItem.ToString();
                     Bike selectedBike = bikeRepository.GetBikeById(selectedBikeId);
 
-                    if(selectedBike.IsLocked == false)
+                    if (selectedBike.IsLocked == false)
                     {
                         BikeDetailWindow bikeDetailWindow = new BikeDetailWindow(selectedBike, bikeRepository);
                         bikeDetailWindow.ShowDialog();
@@ -143,21 +143,7 @@ namespace servisas
             RefreshBikeList(bikes);
         }
 
-        private void SetPasswordButton_Click(object sender, RoutedEventArgs e)
-        {
-            string newPassword = PasswordTextBox.Text;
-            if (!string.IsNullOrEmpty(newPassword))
-            {
-                string hash = ComputeSha256Hash(newPassword);
-                JsonFileHandler.SaveHashToJson(hash);
-                MessageBox.Show("Slaptažodis išsaugotas..");
-            }
-            else
-            {
-                MessageBox.Show("Slaptažodis neįvestas..");
-            }
 
-        }
 
         static string ComputeSha256Hash(string string_to_hash)
         {
@@ -172,6 +158,12 @@ namespace servisas
                 }
                 return builder.ToString();
             }
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
         }
 
     }
