@@ -1,4 +1,5 @@
-﻿using servisas;
+﻿using Microsoft.VisualBasic;
+using servisas;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace servisas
 {
@@ -36,7 +38,7 @@ namespace servisas
 
             if (string.IsNullOrEmpty(BikeIdTextBox.Text) || string.IsNullOrEmpty(ModelTextBox.Text))
             {
-                MessageBox.Show("ID and Model must not be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Įveskite VIN kodą ir modelį prieš kurdami keturratį.", "Klaida", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -45,7 +47,7 @@ namespace servisas
 
             Bike newBike = new Bike
             {
-                BikeId = bikeId,
+                BikeId = bikeId, // VIN
                 Model = model,
                 OverallCondition = "...",
                 CoolantLevel = "...",
@@ -71,18 +73,6 @@ namespace servisas
             }
         }
 
-        private string GetSelectedBikeId()
-        {
-            if (BikeListBox.SelectedItem != null)
-            {
-                return BikeListBox.SelectedItem.ToString();
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
-
         private void BikeListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (BikeListBox.SelectedItem != null)
@@ -92,11 +82,34 @@ namespace servisas
                     string selectedBikeId = BikeListBox.SelectedItem.ToString();
                     Bike selectedBike = bikeRepository.GetBikeById(selectedBikeId);
 
-                    BikeDetailWindow bikeDetailWindow = new BikeDetailWindow(selectedBike, bikeRepository);
-                    //bikeDetailWindow.DataContext = selectedBike;
-                    bikeDetailWindow.ShowDialog();
+                    if (selectedBike.IsLocked == false)
+                    {
+                        BikeDetailWindow bikeDetailWindow = new BikeDetailWindow(selectedBike, bikeRepository);
+                        bikeDetailWindow.ShowDialog();
 
-                    RefreshBikeList();
+                        RefreshBikeList();
+                    }
+                    else
+                    {
+                        PasswordInput passwordInput = new PasswordInput();
+                        passwordInput.ShowDialog();
+
+                        string userInput = passwordInput.EnteredPassword;
+                        string userInput_hash = ComputeSha256Hash(userInput);
+                        string? password_hash = JsonFileHandler.LoadHashFromJson();
+
+                        if (userInput_hash == password_hash)
+                        {
+                            BikeDetailWindow bikeDetailWindow = new BikeDetailWindow(selectedBike, bikeRepository);
+                            bikeDetailWindow.ShowDialog();
+
+                            RefreshBikeList();
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(userInput_hash) && passwordInput.OKButtonClicked) MessageBox.Show("Neteisingas slaptažodis..");
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -124,12 +137,33 @@ namespace servisas
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                bikes = bikes.Where(bike => bike.BikeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                                             bike.Model.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-                             .ToList();
+                bikes = bikes.Where(bike => bike.BikeId.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || bike.Model.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             RefreshBikeList(bikes);
+        }
+
+
+
+        static string ComputeSha256Hash(string string_to_hash)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(string_to_hash));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
         }
 
     }

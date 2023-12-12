@@ -5,60 +5,420 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:servisas"
         mc:Ignorable="d"
-        Title="BikeDetailWindow" Height="460" Width="810">
+        Title="Keturratis" Height="460" Width="810">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <StackPanel Margin="10" >
 
-                <!-- Pradinis tikrinimas -->
-                <TextBlock Text="Pradinis patikrinimas" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Bike ID:"/>
-                    <TextBox x:Name="BikeIdTextBox" Width="200" Margin="0,5"/>
+                <!-- Serviso lapas -->
+                <TextBlock Text="Serviso lapas" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                
+                <UniformGrid Columns="2" Margin="15" Width="80">
+                    <TextBlock Text="Nr." FontWeight="Bold" FontSize="17" VerticalAlignment="Center"/>
+                    <TextBox x:Name="NrTextBox" FontWeight="Bold"  Width="40" Margin="0" VerticalAlignment="Center" TextAlignment="Center"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Model:"/>
-                    <TextBox x:Name="ModelTextBox" Width="200" Margin="0,5"/>
+                <UniformGrid Columns="2" Margin="15" Width="400">
+                    <TextBlock Text="Vykdantis mechanikas:" FontSize="15" VerticalAlignment="Center" Margin="40,0,0,0"/>
+                    <TextBox x:Name="MechanicTextBox" Width="200" VerticalAlignment="Center" TextAlignment="Center"/>
+                </UniformGrid>
+                
+                <!-- Bendra informacija -->
+
+                <Grid Margin="15" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Data:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="DateServiceTextBox" Grid.Column="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Modelis:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ModelTextBox" Grid.Column="3" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Tel nr.:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="PhoneTextBox" Grid.Column="1" Grid.Row="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="1" Text="Rida km:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="MileageTextBox" Grid.Column="3" Grid.Row="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="VIN kodas:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="BikeIdTextBox" Grid.Column="1" Grid.Row="2" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="2" Text="Moto/h:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="MotoHTextBox" Grid.Column="3" Grid.Row="2" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Valstybinis numeris:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="RegistrationPlateTextBox" Grid.Column="1" Grid.Row="3" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="2" Grid.Row="3" Text="Metai:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ManufactureYearTextBox" Grid.Column="3" Grid.Row="3" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </Grid>
+
+                <!-- Antra lentele, taip/ne -->
+
+                <Grid HorizontalAlignment="Center" Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Width="150" Text="Gamykliniai atnaujinimai:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ManufactureUpdateTextBox" Grid.Row="0" Grid.Column="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Garantiniai gedimai:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="GuaranteeUpdateTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="RR:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="RRTextBox" Grid.Row="2" Grid.Column="1" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+
+                </Grid>
+
+                <!-- Trecia lentele, negarantiniai darbai -->
+                <TextBlock Text="Negarantiniai remonto darbai" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Nr" FontWeight="Bold" Width="25" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Darbo apibūdinimas" FontWeight="Bold" Width="475" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Kodas" FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="Kaina" FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Data Rows -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding NonGuaranteeServices}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Grid.Column="0" Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="25"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Description, Mode=TwoWay}" Width="475" TextWrapping="Wrap"/>
+                                    <TextBox Grid.Column="2" Text="{Binding Code, Mode=TwoWay}" Width="100"/>
+                                    <TextBox Grid.Column="3" Text="{Binding Price, Mode=TwoWay}" Width="100"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="270">
+                    <Button Content="Pridėti" Click="AddServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                    <Button Content="Ištrinti" Click="RemoveNonGuaranteeServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                </UniformGrid>
+                <!-- Ketvirta lentele, negarantiniu darbu laikai -->
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Nr" FontWeight="Bold" Width="25" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Pradėta" FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Baigta" FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="Atlikti darbai" FontWeight="Bold" Width="475" TextAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Data Rows -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding NonGuaranteeServicesTime}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Grid.Column="0" Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="25"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Start, Mode=TwoWay}" Width="100" TextWrapping="Wrap"/>
+                                    <TextBox Grid.Column="2" Text="{Binding End, Mode=TwoWay}" Width="100"/>
+                                    <TextBox Grid.Column="3" Text="{Binding Service, Mode=TwoWay}" Width="475"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="270">
+                    <Button Content="Pridėti" Click="AddServiceTimeButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                    <Button Content="Ištrinti" Click="RemoveNonGuaranteeServiceTimeButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Overall Condition:"/>
-                    <ComboBox x:Name="OverallConditionComboBox" Width="200" Margin="0,5" />
+                <!-- Penkta lentele, negarantiniu laiku dalys -->
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Nr" FontWeight="Bold" Width="25" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Dalys" FontWeight="Bold" Width="175" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Sąskaitos nr." FontWeight="Bold" Width="175" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="Detalės kodas" FontWeight="Bold" Width="125" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="Vnt, ml, gr." FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="5" Text="Kaina" FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Data Rows -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding NonGuaranteeServicesPart}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Grid.Column="0" Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="25"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Part, Mode=TwoWay}" Width="175" TextWrapping="Wrap"/>
+                                    <TextBox Grid.Column="2" Text="{Binding AccNumber, Mode=TwoWay}" Width="175"/>
+                                    <TextBox Grid.Column="3" Text="{Binding PartNumber, Mode=TwoWay}" Width="125"/>
+                                    <TextBox Grid.Column="4" Text="{Binding Quantity, Mode=TwoWay}" Width="100"/>
+                                    <TextBox Grid.Column="5" Text="{Binding Price, Mode=TwoWay}" Width="100"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="270">
+                    <Button Content="Pridėti" Click="AddServicePartButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                    <Button Content="Ištrinti" Click="RemoveServicePartButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Coolant Level:"/>
-                    <ComboBox x:Name="CoolantLevelComboBox" Width="200" Margin="0,5" />
+                <!-- Sesta lentele, garantiniai darbai -->
+                <TextBlock Text="Garantiniai remonto darbai, gamykliniai atnaujinimai" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Nr" FontWeight="Bold" Width="25" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Darbo apibūdinimas" FontWeight="Bold" Width="550" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Laikas" FontWeight="Bold" Width="125" TextAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Data Rows -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding GuaranteeServices}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Grid.Column="0" Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="25"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Description, Mode=TwoWay}" Width="550" TextWrapping="Wrap"/>
+                                    <TextBox Grid.Column="2" Text="{Binding Time, Mode=TwoWay}" Width="125"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="270">
+                    <Button Content="Pridėti" Click="AddGuaranteeServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                    <Button Content="Ištrinti" Click="RemoveGuaranteeServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Engine Oil Level:"/>
+                <!-- Septinta lentele, garantiniu darbu dalys -->
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Nr" FontWeight="Bold" Width="25" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Dalys" FontWeight="Bold" Width="275" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Sąskaitos nr." FontWeight="Bold" Width="175" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="Detalės kodas" FontWeight="Bold" Width="125" TextAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="Vnt, ml, gr." FontWeight="Bold" Width="100" TextAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Data Rows -->
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding GuaranteeServicesPart}" VerticalAlignment="Bottom">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Grid.Column="0" Text="{Binding Number, Mode=TwoWay}" FontWeight="Bold" Width="25"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Part, Mode=TwoWay}" Width="275" TextWrapping="Wrap"/>
+                                    <TextBox Grid.Column="2" Text="{Binding AccNumber, Mode=TwoWay}" Width="175"/>
+                                    <TextBox Grid.Column="3" Text="{Binding PartNumber, Mode=TwoWay}" Width="125"/>
+                                    <TextBox Grid.Column="4" Text="{Binding Quantity, Mode=TwoWay}" Width="100"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="270">
+                    <Button Content="Pridėti" Click="AddGuaranteeServicePartButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                    <Button Content="Ištrinti" Click="RemoveGuaranteeServicePartButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
+                </UniformGrid>
+
+                <!-- Pradinis patikrinimas -->
+                <TextBlock Text="Pradinis patikrinimas" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Keturračio išorinė būklė:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="OverallConditionComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Aušinimo skysčio lygis:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="CoolantLevelComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variklio alyvos lygis:" VerticalAlignment="Center"/>
                     <!--6-->
-                    <ComboBox x:Name="EngineOilLevelComboBox" Width="200" Margin="0,5" />
+                    <ComboBox x:Name="EngineOilLevelComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Tyre Pressure:"/>
-                    <ComboBox x:Name="TyrePressureComboBox" Width="200" Margin="0,5" />
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Padangų slėgis:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="TyrePressureComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Fasteners Condition:"/>
-                    <ComboBox x:Name="FastenersComboBox" Width="200" Margin="0,5" />
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Tvirtinimo elementai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FastenersComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
                 </UniformGrid>
 
-                <UniformGrid Columns="2" Margin="0,5">
-                    <TextBlock Text="Water Pump Emergency Pipe Condition:"/>
-                    <ComboBox x:Name="WaterPumpComboBox" Width="200" Margin="0,5" />
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Vandens pompos avarinio išbėgimo šlangutė:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="WaterPumpComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
                 </UniformGrid>
+
 
                 <!-- Elektros, jungikliu patikra -->
-                <TextBlock Text="Elektros, jungikliu patikra" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="Elektros, jungiklių patikra" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
 
-                <Button Content="Save" Click="SaveButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
-                <Button Content="Delete Bike" Click="DeleteBikeButton_Click" Width="75" HorizontalAlignment="Left" Margin="0,1"/>
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Trumpos šviesos:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="LowBeamComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Tolimos šviesos:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="HighBeamComboBox" Width="200" Margin="0,5" VerticalAlignment="Center" />
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Posūkiai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BlinkersComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Avariniai žibintai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="EmergencyBlinkersComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <!-- Options -->
+                <TextBlock Text="Parinktys" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="4" Margin="15" Width="400">
+                    <Button Content="Išsaugoti" Click="SaveButton_Click" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+                    <Button Content="Ištrinti" Click="DeleteBikeButton_Click" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+                    <Button Content="Užrakinti" Click="LockButtonClick" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+                    <Button Content="Atrakinti" Click="UnlockButtonClick" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+                </UniformGrid>
+
+
+                <!-- Additional information -->
+                <TextBlock Text="{Binding CreatedDate, StringFormat='Sukūrimo data: {0:yyyy-MM-dd HH:mm}'}"/>
+                <TextBlock Text="{Binding UpdatedDate, StringFormat='Paskutinio redagavimo data: {0:yyyy-MM-dd HH:mm}'}"/>
+                <TextBlock Text="{Binding IsLocked, StringFormat='Užrakto būsena: {0:}'}"/>
 
             </StackPanel>
         </Grid>
