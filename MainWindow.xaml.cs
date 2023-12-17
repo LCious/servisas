@@ -49,16 +49,19 @@ namespace servisas
             {
                 BikeId = bikeId, // VIN
                 Model = model,
-                OverallCondition = "...",
+/*                OverallCondition = "...",
                 CoolantLevel = "...",
                 EngineOilLevel = "...",//7
                 TyrePressure = "...",
                 Fasteners = "...",
-                WaterPump = "...",
+                WaterPump = "...",*/
             };
 
             bikeRepository.AddBike(newBike);
             RefreshBikeList();
+
+            BikeIdTextBox.Text = String.Empty;
+            ModelTextBox.Text = String.Empty;
 
         }
 
