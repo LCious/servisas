@@ -106,6 +106,141 @@ namespace servisas
         [JsonProperty("EmergencyBlinkers")]
         public string EmergencyBlinkers { get; set; } = "";
 
+        [JsonProperty("PlateLights")]
+        public string PlateLights { get; set; } = "";
+
+        [JsonProperty("BrakeLights")]
+        public string BrakeLights { get; set; } = "";
+
+        [JsonProperty("WinchRope")]
+        public string WinchRope { get; set; } = "";
+
+        [JsonProperty("OtherSwitches")]
+        public string OtherSwitches { get; set; } = "";
+
+        [JsonProperty("BatteryConnection")]
+        public string BatteryConnection { get; set; } = "";
+
+        [JsonProperty("BatteryVoltage")]
+        public string BatteryVoltage { get; set; } = "";
+
+        [JsonProperty("IdleCharging")]
+        public string IdleCharging { get; set; } = "";
+
+        [JsonProperty("RPMCharging")]
+        public string RPMCharging { get; set; } = "";
+
+        //Test drive
+        [JsonProperty("GearCheck")]
+        public string GearCheck { get; set; } = "";
+
+        [JsonProperty("IdleCylinder1")]
+        public string IdleCylinder1 { get; set; } = "";
+
+        [JsonProperty("IdleCylinder2")]
+        public string IdleCylinder2 { get; set; } = "";
+
+        [JsonProperty("Fan")]
+        public string Fan { get; set; } = "";
+
+        [JsonProperty("TwoWD")]
+        public string TwoWD { get; set; } = "";
+
+        [JsonProperty("FourWD")]
+        public string FourWD { get; set; } = "";
+
+        [JsonProperty("FourWDBlock")]
+        public string FourWDBlock { get; set; } = "";
+
+        [JsonProperty("TestDriveComments")]
+        public string TestDriveComments { get; set; } = "";
+
+        //Drivetrain
+        [JsonProperty("Hinges")]
+        public string Hinges { get; set; } = "";
+
+        [JsonProperty("SteeringCross")]
+        public string SteeringCross { get; set; } = "";
+
+        [JsonProperty("DriveShaft")]
+        public string DriveShaft { get; set; } = "";
+
+        [JsonProperty("Rubbers")]
+        public string Rubbers { get; set; } = "";
+
+        [JsonProperty("SteeringMovement")]
+        public string SteeringMovement { get; set; } = "";
+
+        [JsonProperty("DriveShaftCross")]
+        public string DriveShaftCross { get; set; } = "";
+
+        [JsonProperty("Nuts")]
+        public string Nuts { get; set; } = "";
+
+        [JsonProperty("WheelCheck")]
+        public string WheelCheck { get; set; } = "";
+
+        //Brakes
+        [JsonProperty("BrakePads")]
+        public string BrakePads { get; set; } = "";
+
+        [JsonProperty("BrakeDiscs")]
+        public string BrakeDiscs { get; set; } = "";
+
+        [JsonProperty("BrakeFluid")]
+        public string BrakeFluid { get; set; } = "";
+
+        [JsonProperty("BrakeHose")]
+        public string BrakeHose { get; set; } = "";
+
+        [JsonProperty("ParkingBrake")]
+        public string ParkingBrake { get; set; } = "";
+
+        [JsonProperty("BrakeSystem")]
+        public string BrakeSystem { get; set; } = "";
+
+        //Oils, filters etc
+        [JsonProperty("DifferentialPR")]
+        public string DifferentialPR { get; set; } = "";
+
+        [JsonProperty("DifferentialGAL")]
+        public string DifferentialGAL { get; set; } = "";
+
+        [JsonProperty("Liquids")]
+        public string Liquids { get; set; } = "";
+
+        [JsonProperty("OilFilter")]
+        public string OilFilter { get; set; } = "";
+
+        [JsonProperty("OilChange")]
+        public string OilChange { get; set; } = "";
+
+        [JsonProperty("AirFilter")]
+        public string AirFilter { get; set; } = "";
+
+        [JsonProperty("VariatoriausSkyrius")]
+        public string VariatoriausSkyrius { get; set; } = "";
+
+        [JsonProperty("VariatoriausRieboksliai")]
+        public string VariatoriausRieboksliai { get; set; } = "";
+
+        [JsonProperty("VariatoriausPriverzimas")]
+        public string VariatoriausPriverzimas { get; set; } = "";
+
+        [JsonProperty("VariatoriausLekstes")]
+        public string VariatoriausLekstes { get; set; } = "";
+
+        [JsonProperty("FuelHose")]
+        public string FuelHose { get; set; } = "";
+
+        [JsonProperty("FuelFilter")]
+        public string FuelFilter { get; set; } = "";
+
+        [JsonProperty("Exhaust")]
+        public string Exhaust { get; set; } = "";
+
+        [JsonProperty("ExhaustHeat")]
+        public string ExhaustHeat { get; set; } = "";
 
         //Additional information
         [JsonProperty("CreatedDate")]

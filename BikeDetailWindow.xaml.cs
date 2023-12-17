@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,11 +67,58 @@ namespace servisas
                 HighBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
                 BlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
                 EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                PlateLightsComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BrakeLightsComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                WinchRopeComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                OtherSwitchesComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BatteryConnectionComboBox.ItemsSource = new List<string> { "Priveržti", "Atsipalaidavę" };
+                BatteryVoltageComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                IdleChargingComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                RPMChargingComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+
+                GearCheckComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                IdleCylinder1ComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                IdleCylinder2ComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                FanComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                TwoWDComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                FourWDComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                FourWDBlockComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+
+                HingesComboBox.ItemsSource = new List<string> { "Tinkami naudoti", "Netinkami" };
+                SteeringCrossComboBox.ItemsSource = new List<string> { "Tinkama naudoti", "Netinkama" };
+                DriveShaftComboBox.ItemsSource = new List<string> { "Tinkamas naudoti", "Netinkamas" };
+                RubbersComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                SteeringMovementComboBox.ItemsSource = new List<string> { "Nekliba", "Kliba" };
+                DriveShaftCrossComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                NutsComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                WheelCheckComboBox.ItemsSource = new List<string> { "Laisvumo nėra", "Laisvumas yra" };
+
+                BrakePadsComboBox.ItemsSource = new List<string> { "Tinkamos", "Netinkamos" };
+                BrakeDiscsComboBox.ItemsSource = new List<string> { "Tinkami", "Netinkami" };
+                BrakeFluidComboBox.ItemsSource = new List<string> { "Norma", "Mažiau normos" };
+                BrakeHoseComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                ParkingBrakeComboBox.ItemsSource = new List<string> { "Tinkami naudoti", "Netinkami" };
+                BrakeSystemComboBox.ItemsSource = new List<string> { "Sandari", "Nesandari" };
+
+                DifferentialPRComboBox.ItemsSource = new List<string> { "Pakeista", "Patikrinta" };
+                DifferentialGALComboBox.ItemsSource = new List<string> { "Pakeista", "Patikrinta" };
+                LiquidsComboBox.ItemsSource = new List<string> { "Nesisunkia", "Rasoja", "Prasisunkia" };
+                OilFilterComboBox.ItemsSource = new List<string> { "Pakeistas", "Nepakeistas" };
+                OilChangeComboBox.ItemsSource = new List<string> { "Pakeista", "Nepakeista" };
+                AirFilterComboBox.ItemsSource = new List<string> { "Keitimas", "Išvalymas" };
+                VariatoriusSkyriusComboBox.ItemsSource = new List<string> { "Išvalytas", "Pakeistas" };
+                VariatoriausRieboksliaiComboBox.ItemsSource = new List<string> { "Neleidžia", "Prasisunkia tepalas" };
+                VariatoriausPriverzimasComboBox.ItemsSource = new List<string> { "Priveržtas", "Atsipalaidavęs" };
+                VariatoriausLekstesComboBox.ItemsSource = new List<string> { "Tvarkingos", "Netinkamos" };
+                FuelHoseComboBox.ItemsSource = new List<string> { "Tvarkingos", "Pažeistos" };
+                FuelFilterComboBox.ItemsSource = new List<string> { "Tinkamas", "Pakeistas" };
+                ExhaustComboBox.ItemsSource = new List<string> { "Tinkamos", "Pakeistos" };
+                ExhaustHeatComboBox.ItemsSource = new List<string> { "Tinkamos", "Pakeistos" };
 
                 //load saved choices
                 OverallConditionComboBox.SelectedItem = bike.OverallCondition;
                 CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
-                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;//4
+                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;
                 TyrePressureComboBox.SelectedItem = bike.TyrePressure;
                 FastenersComboBox.SelectedItem = bike.Fasteners;
                 WaterPumpComboBox.SelectedItem = bike.WaterPump;
@@ -79,8 +127,55 @@ namespace servisas
                 HighBeamComboBox.SelectedItem = bike.HighBeam;
                 BlinkersComboBox.SelectedItem = bike.Blinkers;
                 EmergencyBlinkersComboBox.SelectedItem = bike.EmergencyBlinkers;
-                //Third table
-                
+                PlateLightsComboBox.SelectedItem = bike.PlateLights;
+                BrakeLightsComboBox.SelectedItem = bike.BrakeLights;
+                WinchRopeComboBox.SelectedItem = bike.WinchRope;
+                OtherSwitchesComboBox.SelectedItem = bike.OtherSwitches;
+                BatteryConnectionComboBox.SelectedItem = bike.BatteryConnection;
+                BatteryVoltageComboBox.SelectedItem = bike.BatteryVoltage;
+                IdleChargingComboBox.SelectedItem = bike.IdleCharging;
+                RPMChargingComboBox.SelectedItem = bike.RPMCharging;
+
+                GearCheckComboBox.SelectedItem = bike.GearCheck;
+                IdleCylinder1ComboBox.SelectedItem = bike.IdleCylinder1;
+                IdleCylinder2ComboBox.SelectedItem = bike.IdleCylinder2;
+                FanComboBox.SelectedItem = bike.Fan;
+                TwoWDComboBox.SelectedItem = bike.TwoWD;
+                FourWDComboBox.SelectedItem = bike.FourWD;
+                FourWDBlockComboBox.SelectedItem = bike.FourWDBlock;
+                TestDriveCommentsTextBox.Text = bike.TestDriveComments;
+
+                HingesComboBox.SelectedItem = bike.Hinges;
+                SteeringCrossComboBox.SelectedItem = bike.SteeringCross;
+                DriveShaftComboBox.SelectedItem = bike.DriveShaft;
+                RubbersComboBox.SelectedItem = bike.Rubbers;
+                SteeringMovementComboBox.SelectedItem = bike.SteeringMovement;
+                DriveShaftCrossComboBox.SelectedItem = bike.DriveShaftCross;
+                NutsComboBox.SelectedItem = bike.Nuts;
+                WheelCheckComboBox.SelectedItem = bike.WheelCheck;
+
+                BrakePadsComboBox.SelectedItem = bike.BrakePads;
+                BrakeDiscsComboBox.SelectedItem = bike.BrakeDiscs;
+                BrakeFluidComboBox.SelectedItem = bike.BrakeFluid;
+                BrakeHoseComboBox.SelectedItem = bike.BrakeHose;
+                ParkingBrakeComboBox.SelectedItem = bike.ParkingBrake;
+                BrakeSystemComboBox.SelectedItem = bike.BrakeSystem;
+
+                DifferentialPRComboBox.SelectedItem = bike.DifferentialPR;
+                DifferentialGALComboBox.SelectedItem = bike.DifferentialGAL;
+                LiquidsComboBox.SelectedItem = bike.Liquids;
+                OilFilterComboBox.SelectedItem = bike.OilFilter;
+                OilChangeComboBox.SelectedItem = bike.OilChange;
+                AirFilterComboBox.SelectedItem = bike.AirFilter;
+                VariatoriusSkyriusComboBox.SelectedItem = bike.VariatoriausSkyrius;
+                VariatoriausRieboksliaiComboBox.SelectedItem = bike.VariatoriausRieboksliai;
+                VariatoriausPriverzimasComboBox.SelectedItem = bike.VariatoriausPriverzimas;
+                VariatoriausLekstesComboBox.SelectedItem = bike.VariatoriausLekstes;
+                FuelHoseComboBox.SelectedItem = bike.FuelHose;
+                FuelFilterComboBox.SelectedItem = bike.FuelFilter;
+                ExhaustComboBox.SelectedItem = bike.Exhaust;
+                ExhaustHeatComboBox.SelectedItem = bike.ExhaustHeat;
+
                 //Additional information
                 bike.UpdatedDate = DateTime.Now;
             }
@@ -90,7 +185,6 @@ namespace servisas
                 NrTextBox.Text = bike.Nr;
                 MechanicTextBox.Text = bike.Mechanic;
 
-                //load text input
                 DateServiceTextBox.Text = bike.DateService;
                 ModelTextBox.Text = bike.Model;
                 BikeIdTextBox.Text = bike.BikeId;
@@ -104,7 +198,6 @@ namespace servisas
                 GuaranteeUpdateTextBox.Text = bike.GuaranteeUpdate;
                 RRTextBox.Text = bike.RR;
 
-                //shows the choices
                 OverallConditionComboBox.ItemsSource = new List<string> { "Gera", "Apgadinta" };
                 CoolantLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
                 EngineOilLevelComboBox.ItemsSource = new List<string> { "Norma", "Žemiau normos", "Aukščiau normos" };
@@ -116,11 +209,58 @@ namespace servisas
                 HighBeamComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
                 BlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
                 EmergencyBlinkersComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                PlateLightsComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BrakeLightsComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                WinchRopeComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                OtherSwitchesComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                BatteryConnectionComboBox.ItemsSource = new List<string> { "Priveržti", "Atsipalaidavę" };
+                BatteryVoltageComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                IdleChargingComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                RPMChargingComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+
+                GearCheckComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                IdleCylinder1ComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                IdleCylinder2ComboBox.ItemsSource = new List<string> { "Atitinka", "Neatitinka" };
+                FanComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                TwoWDComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                FourWDComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+                FourWDBlockComboBox.ItemsSource = new List<string> { "Veikia", "Neveikia" };
+
+                HingesComboBox.ItemsSource = new List<string> { "Tinkami naudoti", "Netinkami" };
+                SteeringCrossComboBox.ItemsSource = new List<string> { "Tinkama naudoti", "Netinkama" };
+                DriveShaftComboBox.ItemsSource = new List<string> { "Tinkamas naudoti", "Netinkamas" };
+                RubbersComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                SteeringMovementComboBox.ItemsSource = new List<string> { "Nekliba", "Kliba" };
+                DriveShaftCrossComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                NutsComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                WheelCheckComboBox.ItemsSource = new List<string> { "Laisvumo nėra", "Laisvumas yra" };
+
+                BrakePadsComboBox.ItemsSource = new List<string> { "Tinkamos", "Netinkamos" };
+                BrakeDiscsComboBox.ItemsSource = new List<string> { "Tinkami", "Netinkami" };
+                BrakeFluidComboBox.ItemsSource = new List<string> { "Norma", "Mažiau normos" };
+                BrakeHoseComboBox.ItemsSource = new List<string> { "Tinkamos naudoti", "Netinkamos" };
+                ParkingBrakeComboBox.ItemsSource = new List<string> { "Tinkami naudoti", "Netinkami" };
+                BrakeSystemComboBox.ItemsSource = new List<string> { "Sandari", "Nesandari" };
+
+                DifferentialPRComboBox.ItemsSource = new List<string> { "Pakeista", "Patikrinta" };
+                DifferentialGALComboBox.ItemsSource = new List<string> { "Pakeista", "Patikrinta" };
+                LiquidsComboBox.ItemsSource = new List<string> { "Nesisunkia", "Rasoja", "Prasisunkia" };
+                OilFilterComboBox.ItemsSource = new List<string> { "Pakeistas", "Nepakeistas" };
+                OilChangeComboBox.ItemsSource = new List<string> { "Pakeista", "Nepakeista" };
+                AirFilterComboBox.ItemsSource = new List<string> { "Keitimas", "Išvalymas" };
+                VariatoriusSkyriusComboBox.ItemsSource = new List<string> { "Išvalytas", "Pakeistas" };
+                VariatoriausRieboksliaiComboBox.ItemsSource = new List<string> { "Neleidžia", "Prasisunkia tepalas" };
+                VariatoriausPriverzimasComboBox.ItemsSource = new List<string> { "Priveržtas", "Atsipalaidavęs" };
+                VariatoriausLekstesComboBox.ItemsSource = new List<string> { "Tvarkingos", "Netinkamos" };
+                FuelHoseComboBox.ItemsSource = new List<string> { "Tvarkingos", "Pažeistos" };
+                FuelFilterComboBox.ItemsSource = new List<string> { "Tinkamas", "Pakeistas" };
+                ExhaustComboBox.ItemsSource = new List<string> { "Tinkamos", "Pakeistos" };
+                ExhaustHeatComboBox.ItemsSource = new List<string> { "Tinkamos", "Pakeistos" };
 
                 //loads saved choices, do i need this here?
                 OverallConditionComboBox.SelectedItem = bike.OverallCondition;
                 CoolantLevelComboBox.SelectedItem = bike.CoolantLevel;
-                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;//4.1
+                EngineOilLevelComboBox.SelectedItem = bike.EngineOilLevel;
                 TyrePressureComboBox.SelectedItem = bike.TyrePressure;
                 FastenersComboBox.SelectedItem = bike.Fasteners;
                 WaterPumpComboBox.SelectedItem = bike.WaterPump;
@@ -129,7 +269,55 @@ namespace servisas
                 HighBeamComboBox.SelectedItem = bike.HighBeam;
                 BlinkersComboBox.SelectedItem = bike.Blinkers;
                 EmergencyBlinkersComboBox.SelectedItem = bike.EmergencyBlinkers;
-                //Additional information
+                PlateLightsComboBox.SelectedItem = bike.PlateLights;
+                BrakeLightsComboBox.SelectedItem = bike.BrakeLights;
+                WinchRopeComboBox.SelectedItem = bike.WinchRope;
+                OtherSwitchesComboBox.SelectedItem = bike.OtherSwitches;
+                BatteryConnectionComboBox.SelectedItem = bike.BatteryConnection;
+                BatteryVoltageComboBox.SelectedItem = bike.BatteryVoltage;
+                IdleChargingComboBox.SelectedItem = bike.IdleCharging;
+                RPMChargingComboBox.SelectedItem = bike.RPMCharging;
+
+                GearCheckComboBox.SelectedItem = bike.GearCheck;
+                IdleCylinder1ComboBox.SelectedItem = bike.IdleCylinder1;
+                IdleCylinder2ComboBox.SelectedItem = bike.IdleCylinder2;
+                FanComboBox.SelectedItem = bike.Fan;
+                TwoWDComboBox.SelectedItem = bike.TwoWD;
+                FourWDComboBox.SelectedItem = bike.FourWD;
+                FourWDBlockComboBox.SelectedItem = bike.FourWDBlock;
+                TestDriveCommentsTextBox.Text = bike.TestDriveComments;
+
+                HingesComboBox.SelectedItem = bike.Hinges;
+                SteeringCrossComboBox.SelectedItem = bike.SteeringCross;
+                DriveShaftComboBox.SelectedItem = bike.DriveShaft;
+                RubbersComboBox.SelectedItem = bike.Rubbers;
+                SteeringMovementComboBox.SelectedItem = bike.SteeringMovement;
+                DriveShaftCrossComboBox.SelectedItem = bike.DriveShaftCross;
+                NutsComboBox.SelectedItem = bike.Nuts;
+                WheelCheckComboBox.SelectedItem = bike.WheelCheck;
+
+                BrakePadsComboBox.SelectedItem = bike.BrakePads;
+                BrakeDiscsComboBox.SelectedItem = bike.BrakeDiscs;
+                BrakeFluidComboBox.SelectedItem = bike.BrakeFluid;
+                BrakeHoseComboBox.SelectedItem = bike.BrakeHose;
+                ParkingBrakeComboBox.SelectedItem = bike.ParkingBrake;
+                BrakeSystemComboBox.SelectedItem = bike.BrakeSystem;
+
+                DifferentialPRComboBox.SelectedItem = bike.DifferentialPR;
+                DifferentialGALComboBox.SelectedItem = bike.DifferentialGAL;
+                LiquidsComboBox.SelectedItem = bike.Liquids;
+                OilFilterComboBox.SelectedItem = bike.OilFilter;
+                OilChangeComboBox.SelectedItem = bike.OilChange;
+                AirFilterComboBox.SelectedItem = bike.AirFilter;
+                VariatoriusSkyriusComboBox.SelectedItem = bike.VariatoriausSkyrius;
+                VariatoriausRieboksliaiComboBox.SelectedItem = bike.VariatoriausRieboksliai;
+                VariatoriausPriverzimasComboBox.SelectedItem = bike.VariatoriausPriverzimas;
+                VariatoriausLekstesComboBox.SelectedItem = bike.VariatoriausLekstes;
+                FuelHoseComboBox.SelectedItem = bike.FuelHose;
+                FuelFilterComboBox.SelectedItem = bike.FuelFilter;
+                ExhaustComboBox.SelectedItem = bike.Exhaust;
+                ExhaustHeatComboBox.SelectedItem = bike.ExhaustHeat;
+
                 bike.CreatedDate = selectedBike.CreatedDate;
                 bike.UpdatedDate = selectedBike.UpdatedDate;
             }
@@ -141,7 +329,6 @@ namespace servisas
             bike.Nr = NrTextBox.Text;
             bike.Mechanic = MechanicTextBox.Text;
 
-            //text input
             bike.DateService = DateServiceTextBox.Text;
             bike.Model = ModelTextBox.Text;
             bike.BikeId = BikeIdTextBox.Text;
@@ -155,10 +342,9 @@ namespace servisas
             bike.GuaranteeUpdate = GuaranteeUpdateTextBox.Text;
             bike.RR = RRTextBox.Text;
 
-            //combobox input
             bike.OverallCondition = OverallConditionComboBox.SelectedItem?.ToString() ?? "...";
             bike.CoolantLevel = CoolantLevelComboBox.SelectedItem?.ToString() ?? "...";
-            bike.EngineOilLevel = EngineOilLevelComboBox.SelectedItem?.ToString() ?? "...";//5
+            bike.EngineOilLevel = EngineOilLevelComboBox.SelectedItem?.ToString() ?? "...";
             bike.TyrePressure = TyrePressureComboBox?.SelectedItem?.ToString() ?? "...";
             bike.Fasteners = FastenersComboBox?.SelectedItem?.ToString() ?? "...";
             bike.WaterPump = WaterPumpComboBox?.SelectedItem?.ToString() ?? "...";
@@ -167,6 +353,54 @@ namespace servisas
             bike.HighBeam = HighBeamComboBox?.SelectedItem?.ToString() ?? "...";
             bike.Blinkers = BlinkersComboBox?.SelectedItem?.ToString() ?? "...";
             bike.EmergencyBlinkers = EmergencyBlinkersComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.PlateLights = PlateLightsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BrakeLights = BrakeLightsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.WinchRope = WinchRopeComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.OtherSwitches = OtherSwitchesComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BatteryConnection = BatteryConnectionComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BatteryVoltage = BatteryVoltageComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.IdleCharging = IdleChargingComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.RPMCharging = RPMChargingComboBox?.SelectedItem?.ToString() ?? "...";
+
+            bike.GearCheck = GearCheckComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.IdleCylinder1 = IdleCylinder1ComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.IdleCylinder2 = IdleCylinder2ComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Fan = FanComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.TwoWD = TwoWDComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.FourWD = FourWDComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.FourWDBlock = FourWDBlockComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.TestDriveComments = TestDriveCommentsTextBox.Text;
+
+            bike.Hinges = HingesComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.SteeringCross = SteeringCrossComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.DriveShaft = DriveShaftComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Rubbers = RubbersComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.SteeringMovement = SteeringMovementComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.DriveShaftCross = DriveShaftCrossComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Nuts = NutsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.WheelCheck = WheelCheckComboBox?.SelectedItem?.ToString() ?? "...";
+
+            bike.BrakePads = BrakePadsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BrakeDiscs = BrakeDiscsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BrakeFluid = BrakeFluidComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BrakeHose = BrakeHoseComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.ParkingBrake = ParkingBrakeComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.BrakeSystem = BrakeSystemComboBox?.SelectedItem?.ToString() ?? "...";
+
+            bike.DifferentialPR = DifferentialPRComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.DifferentialGAL = DifferentialGALComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Liquids = LiquidsComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.OilFilter = OilFilterComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.OilChange = OilChangeComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.AirFilter = AirFilterComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.VariatoriausSkyrius = VariatoriusSkyriusComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.VariatoriausRieboksliai = VariatoriausRieboksliaiComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.VariatoriausPriverzimas = VariatoriausPriverzimasComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.VariatoriausLekstes = VariatoriausLekstesComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.FuelHose = FuelHoseComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.FuelFilter = FuelFilterComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.Exhaust = ExhaustComboBox?.SelectedItem?.ToString() ?? "...";
+            bike.ExhaustHeat = ExhaustHeatComboBox?.SelectedItem?.ToString() ?? "...";
 
             bike.UpdatedDate = DateTime.Now;
 

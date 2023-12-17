@@ -139,6 +139,7 @@
                     <Button Content="Pridėti" Click="AddServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
                     <Button Content="Ištrinti" Click="RemoveNonGuaranteeServiceButton_Click" Width="100" HorizontalAlignment="Center" Margin="15"/>
                 </UniformGrid>
+                
                 <!-- Ketvirta lentele, negarantiniu darbu laikai -->
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -390,7 +391,7 @@
                 </UniformGrid>
 
                 <UniformGrid Columns="2" Margin="0,5" Width="600">
-                    <TextBlock Text="Tolimos šviesos:" VerticalAlignment="Center"/>
+                    <TextBlock Text="Ilgos šviesos:" VerticalAlignment="Center"/>
                     <ComboBox x:Name="HighBeamComboBox" Width="200" Margin="0,5" VerticalAlignment="Center" />
                 </UniformGrid>
 
@@ -402,6 +403,240 @@
                 <UniformGrid Columns="2" Margin="0,5" Width="600">
                     <TextBlock Text="Avariniai žibintai:" VerticalAlignment="Center"/>
                     <ComboBox x:Name="EmergencyBlinkersComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Numerių apšvietimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="PlateLightsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių žibintai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakeLightsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Gervės lynas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="WinchRopeComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Visi kiti jungikliai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="OtherSwitchesComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Akumuliatoriaus laidų gnybtai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BatteryConnectionComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Akumuliatoriaus įtampa 12,5V :" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BatteryVoltageComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Krovimas tuščiaja eiga 13,3-14,4V :" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="IdleChargingComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Esant apsukoms (6000 rpm) 13,3-14,7V :" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="RPMChargingComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+                
+                <!-- Bandomasis vaziavimas -->
+                <TextBlock Text="Bandomasis važiavimas" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="L H R P pavarų tikrinimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="GearCheckComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Tuščioji eiga 1 cil. 1500-1600 rpm:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="IdleCylinder1ComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Tuščioji eiga 2 cil. 1300-1400 rpm:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="IdleCylinder2ComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Ventiliatoriaus veikimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FanComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="2WD:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="TwoWDComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="4WD:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FourWDComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="4WD Blokavimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FourWDBlockComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Margin="0,5" Width="600">
+                    <TextBlock Text="Bandymų metu aptikti betkokie nukrypimai (mechaniko komentarai):" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </UniformGrid>
+                <UniformGrid Margin="0,5" Width="600">
+                    <TextBox x:Name="TestDriveCommentsTextBox" Width="600" Height="100" Margin="0,5" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                </UniformGrid>
+                
+                <!-- Vaziuokles testavimas, tikrinimas -->
+                <TextBlock Text="Važiuoklės testavimas, tikrinimas" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Šarnyrai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="HingesComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Vairo kryžmė:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="SteeringCrossComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Kardanas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="DriveShaftComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Apsauginės gumos:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="RubbersComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Vairas (klibėjimas):" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="SteeringMovementComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Kardano kryžmės:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="DriveShaftCrossComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Pakabos svirtys ir varžtų priveržimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="NutsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Patikrinti ratų laisvumą ir sutepti įvores (tepimo taškai):" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="WheelCheckComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <!-- Stabdžiai -->
+                <TextBlock Text="Važiuoklės testavimas, tikrinimas" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių kaladėlės:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakePadsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių diskai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakeDiscsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių skysčio lygis:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakeFluidComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių žarnelės:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakeHoseComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stovėjimo stabdžiai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ParkingBrakeComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Stabdžių sistema sandari:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="BrakeSystemComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <!-- Tepalu, oro filtro, variatoriaus, reduktoriu inspekcija, keitimas -->
+                <TextBlock Text="Tepalų, oro filtro, variatoriaus, reduktorių inspekcija, keitimas" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" Margin="15"/>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Reduktoriaus patikra (PR), alyvos keitimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="DifferentialPRComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Reduktoriaus patikra (GAL), alyvos keitimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="DifferentialGALComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variklio, greičių dėžės skysčių prasisunkimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="LiquidsComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Tepalo filtro keitimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="OilFilterComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variklio tepalo keitimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="OilChangeComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Oro filtro:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="AirFilterComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variatoriaus skyrius:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="VariatoriusSkyriusComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variatoriaus riebokšliai:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="VariatoriausRieboksliaiComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variatoriaus priveržimas:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="VariatoriausPriverzimasComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Variatoriaus lėkščių patikra:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="VariatoriausLekstesComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Kuro žarnelių inspekcija:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FuelHoseComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Kuro filtras:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="FuelFilterComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Duslintuvo tarpinės spyruoklės:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ExhaustComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
+                </UniformGrid>
+
+                <UniformGrid Columns="2" Margin="0,5" Width="600">
+                    <TextBlock Text="Duslintuvo karščio apsaugos:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ExhaustHeatComboBox" Width="200" Margin="0,5" VerticalAlignment="Center"/>
                 </UniformGrid>
 
                 <!-- Options -->
