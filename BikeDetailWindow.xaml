@@ -642,11 +642,13 @@
                 <!-- Options -->
                 <TextBlock Text="Parinktys" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="15"/>
 
-                <UniformGrid Columns="4" Margin="15" Width="400">
+                <UniformGrid Columns="5" Margin="15" Width="400">
                     <Button Content="Išsaugoti" Click="SaveButton_Click" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
                     <Button Content="Ištrinti" Click="DeleteBikeButton_Click" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
                     <Button Content="Užrakinti" Click="LockButtonClick" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
                     <Button Content="Atrakinti" Click="UnlockButtonClick" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+                    <Button Content="Atrakinti" Click="ExportButton_Click" Width="75" HorizontalAlignment="Center" Margin="0,1"/>
+
                 </UniformGrid>
 
 

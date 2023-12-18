@@ -13,6 +13,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//using System.Windows.Media.Imaging;
+//using System.Windows.Shapes;
+//using System.Windows.Xps.Packaging;
+//using System.Windows.Xps;
+//using PdfSharp.Pdf;
+//using System.Reflection.Metadata;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 
 namespace servisas
 {
@@ -322,6 +331,48 @@ namespace servisas
                 bike.UpdatedDate = selectedBike.UpdatedDate;
             }
 
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            string pdfFilePath = "123.pdf";
+
+            try
+            {
+                var writer = new PdfWriter($"{bike.BikeId}.pdf");
+                var pdf = new PdfDocument(writer);
+                var document = new Document(pdf);
+                document.Add(new iText.Layout.Element.Paragraph("Hello World!"));
+                document.Close();
+
+                /*              using (FileStream fs = new(pdfFilePath, FileMode.Create))
+                              {
+                                  using (PdfWriter writer = new(fs))
+                                  {
+                                      using (PdfDocument pdf = new(writer))
+                                      {
+                                          Document document = new(pdf);
+
+                                          // Add bike information to the PDF
+                                          document.Add(new iText.Layout.Element.Paragraph("Bike ID: 123"));
+                                          document.Add(new iText.Layout.Element.Paragraph("Model: Mountain Bike"));
+                                          document.Add(new iText.Layout.Element.Paragraph("Date of Service: 2023-01-01"));
+
+                                        //document.Add(new iText.Layout.Element.Paragraph($"Bike ID: {bike.BikeId}"));
+                                        //document.Add(new iText.Layout.Element.Paragraph($"Model: {bike.Model}"));
+                                        //document.Add(new iText.Layout.Element.Paragraph($"Date of Service: {bike.DateService}"));
+
+                                          document.Close();
+                                      }
+                                  }
+                              }*/
+
+                MessageBox.Show("Exported to PDF successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}\n{ex.StackTrace}\n Bike ID: {bike.BikeId}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
